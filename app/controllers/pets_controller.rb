@@ -9,4 +9,34 @@ class PetsController < ApplicationController
 
     render :show
   end
+
+  def new
+    @pet = Pet.new
+    render :new
+  end
+
+  def create
+    @pet = Pet.create(
+      name: params[:pet][:name],
+      breed: params[:pet][:breed],
+      image_url: params[:pet][:image_url],
+    )
+    redirect_to "/pets"
+  end
+
+  def edit
+    @pet = Pet.find_by(id: params[:id])
+    render :edit
+  end
+
+  def update
+    @pet = Pet.find_by(id: params[:id])
+    @pet.update(
+      name: params[:pet][:name],
+      breed: params[:pet][:breed],
+      image_url: params[:pet][:image_url],
+    )
+
+    redirect_to "/pets"
+  end
 end
