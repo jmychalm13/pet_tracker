@@ -1,6 +1,7 @@
 <h1>All Pets</h1>
 
 <%@pets.each do |pet| %>
+<%= link_to "More Info", pet %>
 <h2><%= pet.name %></h2>
-<img <%= pet.image_url %>>
+<img width=500 height=600 alt="my pup" src="<%= pet.image_url %>">
 <%end%>
